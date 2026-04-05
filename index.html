@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière Beauty Studio | Premium Salon in Delhi</title>
+  <meta name="description" content="Lumière Beauty Studio — Delhi's premier destination for hair, skin, makeup & bridal services. Book instantly on WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════
+       DESIGN TOKENS — change these to rebrand
+    ═══════════════════════════════════════════════ */
+    :root {
+      --c-ivory:    #FAF7F4;
+      --c-blush:    #E8C5B0;
+      --c-rose:     #C2917A;
+      --c-deep:     #8C5E4A;
+      --c-noir:     #1A1410;
+      --c-soft:     #F2EBE4;
+      --c-muted:    #9E8678;
+      --c-white:    #FFFFFF;
+      --c-wa:       #25D366;
+
+      --f-serif:    'Cormorant Garamond', Georgia, serif;
+      --f-sans:     'DM Sans', system-ui, sans-serif;
+
+      --r-sm: 6px;
+      --r-md: 14px;
+      --r-lg: 28px;
+      --r-pill: 100px;
+
+      --shadow-soft: 0 4px 32px rgba(140,94,74,0.10);
+      --shadow-card: 0 2px 20px rgba(26,20,16,0.08);
+
+      /* REBRAND: swap out name, phone, city, WhatsApp number */
+      --brand-name:  "Lumière Beauty Studio";
+      --brand-city:  "New Delhi";
+      --wa-number:   "919876543210";  /* country code + number, no + */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--f-sans);
+      background: var(--c-ivory);
+      color: var(--c-noir);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITIES ────────────────────────────── */
+    .container  { width: 92%; max-width: 1100px; margin: 0 auto; }
+    .serif      { font-family: var(--f-serif); }
+    .tag        { display: inline-block; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--c-deep); font-weight: 500; margin-bottom: .6rem; }
+    .section-title { font-family: var(--f-serif); font-size: clamp(2rem,5vw,3.4rem); font-weight: 400; line-height: 1.15; color: var(--c-noir); }
+    .section-sub { font-size: .95rem; color: var(--c-muted); line-height: 1.75; margin-top: .75rem; max-width: 540px; }
+    section { padding: 80px 0; }
+
+    /* ─── BUTTONS ───────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      padding: 14px 28px; border-radius: var(--r-pill);
+      font-family: var(--f-sans); font-size: .9rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; border: none;
+      transition: all .28s ease; white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--c-noir); color: var(--c-white);
+    }
+    .btn-primary:hover { background: var(--c-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,20,16,.2); }
+    .btn-outline {
+      background: transparent; color: var(--c-noir);
+      border: 1.5px solid var(--c-noir);
+    }
+    .btn-outline:hover { background: var(--c-noir); color: var(--c-white); }
+    .btn-wa {
+      background: var(--c-wa); color: var(--c-white); font-weight: 600;
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.3); }
+
+    /* ─── FLOATING WA BUTTON ────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 22px; right: 18px; z-index: 999;
+      background: var(--c-wa); color: #fff;
+      width: 58px; height: 58px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 28px rgba(37,211,102,.45);
+      text-decoration: none;
+      animation: wa-pulse 2.4s infinite;
+    }
+    .wa-float svg { width: 28px; height: 28px; }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+      50%      { box-shadow: 0 6px 40px rgba(37,211,102,.7); }
+    }
+    .wa-float-label {
+      position: fixed; bottom: 30px; right: 86px; z-index: 998;
+      background: var(--c-white); color: var(--c-noir);
+      padding: 8px 16px; border-radius: var(--r-pill);
+      font-size: .82rem; font-weight: 500;
+      box-shadow: var(--shadow-card);
+      animation: fade-in-right .5s ease .8s both;
+      pointer-events: none;
+    }
+    @keyframes fade-in-right { from { opacity:0; transform:translateX(14px); } to { opacity:1; transform:none; } }
+
+    /* ─── NAVBAR ────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      padding: 18px 0;
+      background: rgba(250,247,244,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(194,145,122,.12);
+      transition: padding .3s;
+    }
+    .navbar.scrolled { padding: 12px 0; }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--f-serif); font-size: 1.45rem;
+      color: var(--c-noir); text-decoration: none; letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--c-rose); font-style: italic; }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; font-size: .85rem; font-weight: 500;
+      color: var(--c-muted); letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--c-deep); }
+    .nav-cta { display: flex; gap: .75rem; align-items: center; }
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 4px; flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px; background: var(--c-noir);
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 800;
+      background: var(--c-ivory);
+      flex-direction: column;
+      padding: 100px 8% 40px;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--f-serif); font-size: 2.2rem; color: var(--c-noir);
+      text-decoration: none; font-weight: 300;
+      border-bottom: 1px solid var(--c-soft);
+      padding-bottom: 1rem;
+    }
+
+    /* ─── HERO ──────────────────────────────────── */
+    #hero {
+      padding: 0; min-height: 100svh;
+      display: grid; grid-template-columns: 1fr;
+      background: var(--c-ivory);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-bg-strip {
+      position: absolute; top: 0; right: 0;
+      width: 45%; height: 100%;
+      background: var(--c-soft);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      min-height: 100svh;
+      padding: 120px 0 80px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 36px; height: 1px; background: var(--c-rose);
+    }
+    .hero-eyebrow span { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--c-rose); font-weight: 500; }
+    .hero-title {
+      font-family: var(--f-serif);
+      font-size: clamp(2.8rem, 8vw, 5.8rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--c-noir);
+    }
+    .hero-title em { font-style: italic; color: var(--c-rose); }
+    .hero-sub {
+      font-size: 1rem; color: var(--c-muted); line-height: 1.8;
+      margin: 1.5rem 0 2.5rem; max-width: 460px;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-trust {
+      display: flex; gap: 2rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid var(--c-blush);
+    }
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-family: var(--f-serif); font-size: 1.8rem;
+      font-weight: 300; color: var(--c-deep);
+    }
+    .trust-label { font-size: .75rem; color: var(--c-muted); margin-top: .2rem; }
+    .hero-image-wrap {
+      position: absolute; right: 0; top: 0;
+      width: 44%; height: 100%; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-img-placeholder {
+      width: 85%; aspect-ratio: 3/4;
+      border-radius: var(--r-lg) 0 0 var(--r-lg);
+      background: linear-gradient(160deg, var(--c-blush) 0%, var(--c-rose) 60%, var(--c-deep) 100%);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 2rem;
+      box-shadow: var(--shadow-soft);
+      margin-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.15)'/%3E%3C/svg%3E") repeat;
+      opacity: .5;
+    }
+    .hero-badge {
+      background: var(--c-white); border-radius: var(--r-md);
+      padding: 12px 20px; box-shadow: var(--shadow-card);
+      position: absolute; bottom: -20px; left: -30px;
+      display: flex; align-items: center; gap: .6rem;
+      white-space: nowrap;
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--c-wa); border-radius: 50%; }
+    .hero-badge span { font-size: .78rem; font-weight: 500; color: var(--c-noir); }
+    .hero-decor-text {
+      position: absolute; right: -40px; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: var(--f-serif); font-size: 5rem;
+      color: rgba(194,145,122,.1); font-weight: 300;
+      white-space: nowrap; pointer-events: none;
+      letter-spacing: .3em;
+    }
+
+    /* ─── SERVICES ──────────────────────────────── */
+    #services { background: var(--c-white); }
+    .services-head { margin-bottom: 3rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--c-ivory);
+      border-radius: var(--r-lg);
+      padding: 2rem 1.75rem;
+      border: 1px solid rgba(194,145,122,.12);
+      transition: all .3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--c-blush), var(--c-rose));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .service-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-4px); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      font-size: 2.2rem; margin-bottom: 1rem; display: block;
+    }
+    .service-name {
+      font-family: var(--f-serif); font-size: 1.45rem; font-weight: 400;
+      color: var(--c-noir); margin-bottom: .6rem;
+    }
+    .service-desc { font-size: .88rem; color: var(--c-muted); line-height: 1.7; }
+    .service-items { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+    .service-item {
+      font-size: .75rem; background: var(--c-soft); color: var(--c-deep);
+      padding: 4px 12px; border-radius: var(--r-pill);
+    }
+
+    /* ─── PRICING ───────────────────────────────── */
+    #pricing { background: var(--c-soft); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .price-card {
+      background: var(--c-white);
+      border-radius: var(--r-md);
+      padding: 1.5rem;
+      border: 1px solid rgba(194,145,122,.15);
+      transition: all .3s;
+    }
+    .price-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-3px); }
+    .price-card.featured {
+      background: var(--c-noir); color: var(--c-white);
+      border-color: var(--c-noir);
+    }
+    .price-service { font-size: .8rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .4rem; }
+    .price-card.featured .price-service { color: rgba(255,255,255,.55); }
+    .price-name { font-family: var(--f-serif); font-size: 1.2rem; font-weight: 500; margin-bottom: .6rem; }
+    .price-amount {
+      font-size: 1.6rem; font-weight: 300;
+      color: var(--c-deep);
+    }
+    .price-card.featured .price-amount { color: var(--c-blush); }
+    .price-amount sup { font-size: .9rem; vertical-align: top; margin-top: .3rem; }
+    .price-desc { font-size: .78rem; margin-top: .5rem; color: var(--c-muted); line-height: 1.5; }
+    .price-card.featured .price-desc { color: rgba(255,255,255,.6); }
+    .price-note { font-size: .8rem; color: var(--c-muted); margin-top: 2rem; font-style: italic; }
+
+    /* ─── BEFORE/AFTER ──────────────────────────── */
+    #gallery { background: var(--c-white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .ba-card {
+      border-radius: var(--r-md); overflow: hidden;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .ba-inner { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-half {
+      aspect-ratio: 3/4;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: .75rem;
+      position: relative;
+    }
+    .ba-half.before { background: linear-gradient(160deg, #d4c4bb, #b8a397); }
+    .ba-half.after  { background: linear-gradient(160deg, var(--c-blush), var(--c-rose)); }
+    .ba-label {
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      font-weight: 600;
+      padding: 4px 12px; border-radius: var(--r-pill);
+    }
+    .ba-half.before .ba-label { background: rgba(255,255,255,.9); color: var(--c-muted); }
+    .ba-half.after  .ba-label { background: var(--c-noir); color: var(--c-white); }
+    .ba-divider {
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: var(--c-white); z-index: 2;
+      transform: translateX(-50%);
+    }
+    .ba-tag {
+      position: absolute; top: .75rem; left: .75rem;
+      background: var(--c-white); border-radius: var(--r-pill);
+      padding: 4px 12px; font-size: .75rem; font-weight: 500; color: var(--c-deep);
+      box-shadow: var(--shadow-card);
+    }
+    .ba-icon {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; opacity: .18;
+    }
+
+    /* ─── TESTIMONIALS ──────────────────────────── */
+    #testimonials { background: var(--c-soft); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .testi-card {
+      background: var(--c-white); border-radius: var(--r-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-card);
+      transition: transform .3s;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .stars { color: #E8A838; font-size: 1rem; letter-spacing: .05em; margin-bottom: .75rem; }
+    .testi-text {
+      font-family: var(--f-serif); font-size: 1.1rem; line-height: 1.7;
+      color: var(--c-noir); font-style: italic; margin-bottom: 1.25rem;
+    }
+    .testi-author { display: flex; align-items: center; gap: .75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-blush), var(--c-rose));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-serif); font-size: 1rem; color: var(--c-white);
+    }
+    .testi-name { font-weight: 500; font-size: .9rem; }
+    .testi-meta { font-size: .78rem; color: var(--c-muted); }
+
+    /* ─── ABOUT ─────────────────────────────────── */
+    #about { background: var(--c-noir); color: var(--c-white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .about-img-wrap {
+      border-radius: var(--r-lg);
+      background: linear-gradient(160deg, var(--c-deep) 0%, var(--c-noir) 100%);
+      aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: rgba(232,197,176,.25);
+      position: relative; overflow: hidden;
+    }
+    .about-img-wrap::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(transparent, rgba(26,20,16,.6));
+    }
+    #about .section-title { color: var(--c-white); }
+    #about .section-sub { color: rgba(255,255,255,.6); }
+    .about-features { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .about-feat {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .feat-icon {
+      width: 40px; height: 40px; border-radius: var(--r-sm);
+      background: rgba(232,197,176,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+      border: 1px solid rgba(232,197,176,.15);
+    }
+    .feat-text h4 { font-size: .9rem; font-weight: 500; color: var(--c-white); margin-bottom: .25rem; }
+    .feat-text p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* ─── LEAD FORM ─────────────────────────────── */
+    #booking { background: var(--c-blush); }
+    .booking-inner {
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .booking-inner .section-sub { margin: .75rem auto 2rem; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; text-align: left;
+    }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .78rem; font-weight: 500; color: var(--c-deep); letter-spacing: .05em; text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea {
+      padding: 13px 16px;
+      background: var(--c-white);
+      border: 1.5px solid rgba(194,145,122,.2);
+      border-radius: var(--r-sm); font-family: var(--f-sans);
+      font-size: .9rem; color: var(--c-noir);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+      border-color: var(--c-rose);
+    }
+    .form-field textarea { resize: vertical; min-height: 90px; }
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 16px; font-size: 1rem; font-weight: 600; justify-content: center; }
+
+    /* ─── CONTACT ───────────────────────────────── */
+    #contact { background: var(--c-white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: var(--r-sm);
+      background: var(--c-soft); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: .85rem; font-weight: 600; margin-bottom: .25rem; }
+    .contact-item p { font-size: .88rem; color: var(--c-muted); line-height: 1.6; }
+    .contact-item a { color: var(--c-deep); text-decoration: none; font-weight: 500; }
+    .map-placeholder {
+      border-radius: var(--r-lg); overflow: hidden;
+      background: var(--c-soft);
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      border: 1px solid rgba(194,145,122,.2);
+    }
+    .map-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(194,145,122,.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(194,145,122,.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .map-pin {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .map-pin-dot {
+      width: 24px; height: 24px; background: var(--c-rose); border-radius: 50%;
+      margin: 0 auto 8px;
+      box-shadow: 0 0 0 6px rgba(194,145,122,.25), 0 0 0 12px rgba(194,145,122,.1);
+    }
+    .map-pin p { font-size: .85rem; font-weight: 500; color: var(--c-deep); }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    footer {
+      background: var(--c-noir); color: rgba(255,255,255,.55);
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2rem; padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .nav-logo { color: var(--c-white); font-size: 1.6rem; }
+    .footer-brand p { font-size: .85rem; line-height: 1.75; margin-top: .75rem; max-width: 260px; }
+    .footer-col h5 { font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; color: var(--c-blush); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--c-blush); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; flex-wrap: wrap; gap: .5rem; }
+    .footer-bottom p { font-size: .78rem; }
+    .footer-socials { display: flex; gap: .75rem; }
+    .social-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: .95rem; transition: background .2s;
+    }
+    .social-icon:hover { background: var(--c-rose); }
+
+    /* ─── ANIMATIONS ────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+
+    /* ─── MOBILE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-bg-strip { width: 100%; clip-path: none; opacity: .35; }
+      .hero-image-wrap { display: none; }
+      .hero-title { font-size: clamp(2.4rem, 10vw, 3.6rem); }
+      .hero-actions { gap: .75rem; }
+      .hero-trust { gap: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-img-wrap { aspect-ratio: 16/9; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: 1; }
+      .wa-float-label { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-trust { flex-wrap: wrap; gap: 1rem; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FLOATING WHATSAPP ═══ -->
+<a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment"
+   target="_blank" rel="noopener" class="wa-float" aria-label="Book on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.85L0 24l6.335-1.502A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.552 9.552 0 01-4.857-1.322l-.35-.208-3.6.853.882-3.506-.228-.363A9.561 9.561 0 012.4 12C2.4 6.698 6.698 2.4 12 2.4c5.303 0 9.6 4.298 9.6 9.6 0 5.302-4.297 9.6-9.6 9.6z" fill-rule="evenodd"/>
+  </svg>
+</a>
+<div class="wa-float-label">Book Now 💬</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">Lumière <span>Studio</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+919876543210" class="btn btn-outline" style="padding:10px 18px;font-size:.82rem;">📞 Call Us</a>
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="btn btn-wa" style="padding:10px 20px;font-size:.82rem;">Book on WhatsApp</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="btn btn-wa" style="width:fit-content;margin-top:1rem;">Book on WhatsApp</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg-strip"></div>
+  <div class="hero-image-wrap">
+    <div class="hero-img-placeholder">
+      <span style="font-size:5rem;opacity:.3;">🌸</span>
+      <div class="hero-badge">
+        <div class="dot"></div>
+        <span>Slots open today</span>
+      </div>
+    </div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow"><span>New Delhi's Premier Studio</span></div>
+    <h1 class="hero-title fade-up">
+      Where Beauty<br />Meets <em>Artistry</em>
+    </h1>
+    <p class="hero-sub fade-up delay-1">
+      Premium hair, skin & bridal services tailored for the modern Indian woman. Trusted by 2,000+ clients across Delhi.
+    </p>
+    <div class="hero-actions fade-up delay-2">
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="btn btn-wa" style="font-size:1rem;padding:16px 32px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.85L0 24l6.335-1.502A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.552 9.552 0 01-4.857-1.322l-.35-.208-3.6.853.882-3.506-.228-.363A9.561 9.561 0 012.4 12C2.4 6.698 6.698 2.4 12 2.4c5.303 0 9.6 4.298 9.6 9.6 0 5.302-4.297 9.6-9.6 9.6z" fill-rule="evenodd"/></svg>
+        Book Appointment
+      </a>
+      <a href="tel:+919876543210" class="btn btn-outline">📞 +91 98765 43210</a>
+    </div>
+    <div class="hero-trust fade-up delay-3">
+      <div class="trust-item"><div class="trust-num">2000+</div><div class="trust-label">Happy Clients</div></div>
+      <div class="trust-item"><div class="trust-num">8+</div><div class="trust-label">Years Experience</div></div>
+      <div class="trust-item"><div class="trust-num">4.9★</div><div class="trust-label">Google Rating</div></div>
+      <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Bridal Makeovers</div></div>
+    </div>
+  </div>
+  <div class="hero-decor-text" aria-hidden="true">BEAUTY</div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="container">
+    <div class="services-head fade-up">
+      <span class="tag">What We Offer</span>
+      <h2 class="section-title">Services Crafted<br />for <em class="serif" style="color:var(--c-rose);font-style:italic;">Every Occasion</em></h2>
+      <p class="section-sub">From everyday grooming to once-in-a-lifetime bridal moments — we do it all with precision and care.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <span class="service-icon">💇‍♀️</span>
+        <div class="service-name">Hair Care</div>
+        <p class="service-desc">From haircuts to colour, smoothening to keratin — achieve the hair of your dreams.</p>
+        <div class="service-items">
+          <span class="service-item">Haircut & Style</span>
+          <span class="service-item">Balayage</span>
+          <span class="service-item">Keratin</span>
+          <span class="service-item">Hair Spa</span>
+        </div>
+      </div>
+      <div class="service-card fade-up delay-1">
+        <span class="service-icon">✨</span>
+        <div class="service-name">Skin & Facial</div>
+        <p class="service-desc">Clinical-grade facials, brightening treatments and de-tan rituals for radiant skin.</p>
+        <div class="service-items">
+          <span class="service-item">HydraFacial</span>
+          <span class="service-item">De-Tan</span>
+          <span class="service-item">Cleanup</span>
+          <span class="service-item">Glow Peel</span>
+        </div>
+      </div>
+      <div class="service-card fade-up delay-2">
+        <span class="service-icon">💄</span>
+        <div class="service-name">Makeup</div>
+        <p class="service-desc">Party, engagement, reception or bridal — flawless looks that photograph beautifully.</p>
+        <div class="service-items">
+          <span class="service-item">Bridal</span>
+          <span class="service-item">Party</span>
+          <span class="service-item">Engagement</span>
+          <span class="service-item">Airbrush</span>
+        </div>
+      </div>
+      <div class="service-card fade-up delay-3">
+        <span class="service-icon">💅</span>
+        <div class="service-name">Nails & Wax</div>
+        <p class="service-desc">Gel extensions, nail art, full body waxing and threading done hygienically.</p>
+        <div class="service-items">
+          <span class="service-item">Gel Extensions</span>
+          <span class="service-item">Nail Art</span>
+          <span class="service-item">Waxing</span>
+          <span class="service-item">Threading</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
+  <div class="container">
+    <div class="fade-up">
+      <span class="tag">Transparent Pricing</span>
+      <h2 class="section-title">Services Starting At</h2>
+      <p class="section-sub">No hidden charges. What you see is what you pay — always.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card fade-up">
+        <div class="price-service">Hair</div>
+        <div class="price-name">Haircut & Blowdry</div>
+        <div class="price-amount"><sup>₹</sup>799</div>
+        <div class="price-desc">Wash, cut & professional blowdry by senior stylist</div>
+      </div>
+      <div class="price-card featured fade-up delay-1">
+        <div class="price-service">Bridal</div>
+        <div class="price-name">Bridal Makeup</div>
+        <div class="price-amount"><sup>₹</sup>12,999</div>
+        <div class="price-desc">Full HD makeup + saree/lehenga draping included</div>
+      </div>
+      <div class="price-card fade-up delay-2">
+        <div class="price-service">Skin</div>
+        <div class="price-name">HydraFacial</div>
+        <div class="price-amount"><sup>₹</sup>2,499</div>
+        <div class="price-desc">Deep cleanse + serum infusion + LED therapy</div>
+      </div>
+      <div class="price-card fade-up delay-3">
+        <div class="price-service">Hair Color</div>
+        <div class="price-name">Global Color</div>
+        <div class="price-amount"><sup>₹</sup>1,499</div>
+        <div class="price-desc">Ammonia-free professional colour starting price</div>
+      </div>
+      <div class="price-card fade-up delay-1">
+        <div class="price-service">Nails</div>
+        <div class="price-name">Gel Extensions</div>
+        <div class="price-amount"><sup>₹</sup>1,199</div>
+        <div class="price-desc">Full set gel nail extensions with nail art</div>
+      </div>
+      <div class="price-card fade-up delay-2">
+        <div class="price-service">Waxing</div>
+        <div class="price-name">Full Body Rica</div>
+        <div class="price-amount"><sup>₹</sup>1,899</div>
+        <div class="price-desc">Rica wax full body including underarms & face</div>
+      </div>
+    </div>
+    <p class="price-note fade-up">* Prices may vary depending on hair length and complexity. WhatsApp us for a personalised quote.</p>
+    <div style="text-align:center;margin-top:2rem;" class="fade-up">
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20know%20the%20pricing%20details" target="_blank" class="btn btn-primary">Get Full Price List on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE/AFTER GALLERY ═══ -->
+<section id="gallery">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <span class="tag">Transformations</span>
+      <h2 class="section-title" style="text-align:center;">Before & <em class="serif" style="color:var(--c-rose);font-style:italic;">After</em></h2>
+      <p class="section-sub" style="margin:0 auto;">Real results from real clients. No filters, no edits.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="ba-card fade-up">
+        <div class="ba-tag">Hair Colour</div>
+        <div class="ba-inner">
+          <div class="ba-half before">
+            <div class="ba-icon">👱‍♀️</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-half after">
+            <div class="ba-icon">👩‍🦰</div>
+            <span class="ba-label">After</span>
+          </div>
+          <div class="ba-divider"></div>
+        </div>
+      </div>
+      <div class="ba-card fade-up delay-1">
+        <div class="ba-tag">Bridal Makeup</div>
+        <div class="ba-inner">
+          <div class="ba-half before">
+            <div class="ba-icon">👩</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-half after" style="background:linear-gradient(160deg,#d4a5b5,var(--c-deep));">
+            <div class="ba-icon">👰</div>
+            <span class="ba-label">After</span>
+          </div>
+          <div class="ba-divider"></div>
+        </div>
+      </div>
+      <div class="ba-card fade-up delay-2">
+        <div class="ba-tag">Skin Glow Facial</div>
+        <div class="ba-inner">
+          <div class="ba-half before">
+            <div class="ba-icon">😐</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-half after" style="background:linear-gradient(160deg,#f0d0c0,var(--c-rose));">
+            <div class="ba-icon">🤩</div>
+            <span class="ba-label">After</span>
+          </div>
+          <div class="ba-divider"></div>
+        </div>
+      </div>
+      <div class="ba-card fade-up delay-3">
+        <div class="ba-tag">Nail Art</div>
+        <div class="ba-inner">
+          <div class="ba-half before">
+            <div class="ba-icon">🤲</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-half after" style="background:linear-gradient(160deg,#f5c0d0,#b87090);">
+            <div class="ba-icon">💅</div>
+            <span class="ba-label">After</span>
+          </div>
+          <div class="ba-divider"></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="fade-up">
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20see%20more%20transformations" target="_blank" class="btn btn-outline">View More on WhatsApp ➔</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <span class="tag">Client Love</span>
+      <h2 class="section-title" style="text-align:center;">What Our Clients Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Got my bridal makeup done here and I looked absolutely stunning on my wedding day. The team is so professional and patient. Will cherish these memories forever!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <div class="testi-name">Priya Sharma</div>
+            <div class="testi-meta">Bridal Makeup · South Delhi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Best balayage in Delhi! I've been to so many salons but the hair colour here is next level. The stylist understood exactly what I wanted."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Ananya Kapoor</div>
+            <div class="testi-meta">Hair Balayage · Hauz Khas</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The HydraFacial completely transformed my skin. I have been doing it monthly for 6 months now and people keep asking what my skincare secret is!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">N</div>
+          <div>
+            <div class="testi-name">Nisha Malhotra</div>
+            <div class="testi-meta">HydraFacial · Saket</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Super hygienic, premium products and incredibly skilled staff. Booking via WhatsApp is so easy! I recommended Lumière to all my friends."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Riya Gupta</div>
+            <div class="testi-meta">Regular Client · Vasant Kunj</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <span style="font-size:6rem;position:relative;z-index:1;">🌸</span>
+        <div style="position:absolute;bottom:2rem;left:1.5rem;right:1.5rem;z-index:3;">
+          <div style="background:rgba(232,197,176,.12);border:1px solid rgba(232,197,176,.2);border-radius:var(--r-md);padding:1rem;">
+            <div style="font-family:var(--f-serif);font-size:1.1rem;color:var(--c-blush);">"Beauty is not about looking perfect, it's about feeling confident."</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.45);margin-top:.5rem;">— Preethi Nair, Founder</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up delay-1">
+        <span class="tag" style="color:var(--c-blush);">Our Story</span>
+        <h2 class="section-title">8 Years of <em class="serif" style="color:var(--c-rose);font-style:italic;">Pure Passion</em></h2>
+        <p class="section-sub" style="color:rgba(255,255,255,.6);">
+          Founded in 2016 by Preethi Nair, Lumière started as a boutique studio with 2 chairs and a dream. Today we're a team of 12 certified beauty professionals trusted by 2,000+ clients across Delhi NCR.
+        </p>
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-icon">🎓</div>
+            <div class="feat-text">
+              <h4>Internationally Trained</h4>
+              <p>Our team is certified by VLCC, Lakme Academy & CIDESCO International.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">🧴</div>
+            <div class="feat-text">
+              <h4>Premium Products Only</h4>
+              <p>We use only L'Oréal Professionnel, Wella, and O3+ professional ranges.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">🛡️</div>
+            <div class="feat-text">
+              <h4>Hygiene First</h4>
+              <p>Sterilised tools, single-use disposables and a spotless studio — always.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+          <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="btn btn-wa">Book Your Session</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOOKING FORM ═══ -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-inner">
+      <div class="fade-up">
+        <span class="tag" style="color:var(--c-deep);">Quick Enquiry</span>
+        <h2 class="section-title">Reserve Your Slot</h2>
+        <p class="section-sub">Fill in your details and we'll WhatsApp you with available slots within 15 minutes.</p>
+      </div>
+      <div class="fade-up delay-1">
+        <div class="form-grid" id="leadForm">
+          <div class="form-field">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" placeholder="Priya Sharma" />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-field">
+            <label for="service">Service Required</label>
+            <select id="service">
+              <option value="">Select a service</option>
+              <option>Haircut & Styling</option>
+              <option>Hair Colour / Balayage</option>
+              <option>Bridal Makeup</option>
+              <option>Party Makeup</option>
+              <option>HydraFacial</option>
+              <option>Skin Treatment</option>
+              <option>Nail Art / Extensions</option>
+              <option>Waxing / Threading</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" />
+          </div>
+          <div class="form-field full">
+            <label for="note">Any Special Notes</label>
+            <textarea id="note" placeholder="E.g., Bride-to-be, specific product sensitivity, etc."></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary form-submit" onclick="submitForm()">
+          📲 Send Enquiry via WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-up" style="margin-bottom:3rem;">
+      <span class="tag">Find Us</span>
+      <h2 class="section-title">Visit the Studio</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item fade-up">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>Shop 14, Lotus Garden Mall<br />Saket, New Delhi — 110017</p>
+          </div>
+        </div>
+        <div class="contact-item fade-up delay-1">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Mon – Sat: 10:00 AM – 8:00 PM<br />Sunday: 11:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-item fade-up delay-2">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <p><a href="tel:+919876543210">+91 98765 43210</a><br /><a href="tel:+919876543211">+91 98765 43211</a></p>
+          </div>
+        </div>
+        <div class="contact-item fade-up delay-3">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:hello@lumierestudio.in">hello@lumierestudio.in</a></p>
+          </div>
+        </div>
+        <div class="fade-up" style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="btn btn-wa">WhatsApp Us</a>
+          <a href="tel:+919876543210" class="btn btn-outline">Call Now</a>
+        </div>
+      </div>
+      <div class="map-placeholder fade-up delay-1">
+        <div class="map-grid"></div>
+        <div class="map-pin">
+          <div class="map-pin-dot"></div>
+          <p>Lumière Beauty Studio<br /><span style="font-size:.78rem;color:var(--c-muted);">Saket, New Delhi</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">Lumière <span>Studio</span></a>
+        <p>Delhi's premier beauty destination. Your transformation is our passion.</p>
+        <div class="footer-socials" style="margin-top:1.25rem;">
+          <a href="#" class="social-icon" aria-label="Instagram">📸</a>
+          <a href="#" class="social-icon" aria-label="Facebook">👍</a>
+          <a href="https://wa.me/919876543210" class="social-icon" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Hair Care</a></li>
+          <li><a href="#services">Skin & Facials</a></li>
+          <li><a href="#services">Bridal Makeup</a></li>
+          <li><a href="#services">Nails & Wax</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Lumière Beauty Studio. All rights reserved.</p>
+      <p>Made with 💗 in New Delhi</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Intersection Observer for fade-up animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Hero animations on load
+  document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 200 + i * 150);
+  });
+
+  // WhatsApp form submission
+  function submitForm() {
+    const name    = document.getElementById('fname').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const date    = document.getElementById('date').value;
+    const note    = document.getElementById('note').value.trim();
+
+    if (!name || !phone) {
+      alert('Please enter your name and phone number to continue.');
+      return;
+    }
+
+    let msg = `Hi, I want to book an appointment at Lumière Beauty Studio.\n\n`;
+    msg += `👤 Name: ${name}\n`;
+    msg += `📞 Phone: ${phone}\n`;
+    if (service) msg += `💆 Service: ${service}\n`;
+    if (date)    msg += `📅 Date: ${date}\n`;
+    if (note)    msg += `📝 Notes: ${note}\n`;
+
+    const url = `https://wa.me/919876543210?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+
+  // Set min date for date picker to today
+  const dateInput = document.getElementById('date');
+  if (dateInput) {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  }
+</script>
+</body>
+</html>
